@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using User;
 using Utility;
+using Microsoft.Extensions.Logging;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EVEAPI.Controllers
 {
@@ -18,26 +18,31 @@ namespace EVEAPI.Controllers
     {
         private readonly IAuthorizationService authorizationService;
         private readonly IHttpContextAccessor httpContextAccessor;
-        public UserController(IHttpContextAccessor httpContextAccessor,IAuthorizationService authorizationService)
+        private readonly ILogger logger;
+        public UserController(IHttpContextAccessor httpContextAccessor,IAuthorizationService authorizationService, ILogger<UserController> logger)
         {
             this.authorizationService = authorizationService;
             this.httpContextAccessor = httpContextAccessor;
+            this.logger = logger;
         }
         [HttpPost]
         public async Task<ActionResult> Login([FromBody]LoginInfo loginInfo)
         {
+
             if (string.IsNullOrWhiteSpace(loginInfo?.UserName) || string.IsNullOrWhiteSpace(loginInfo.Password))
             {
                 return this.Unauthorized();
             }
+            this.logger.LogInformation("User {0} begin to login", loginInfo.UserName);
             string accessToken = string.Empty;
             string clientIp = this.httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
             try
             {
                 accessToken = await this.authorizationService.GetAcceessToken(loginInfo?.UserName, loginInfo.Password, clientIp);
             }
-            catch
+            catch(Exception e)
             {
+                this.logger.LogError("{0}\r\n{1}", e.Message, e.StackTrace);
                 return this.Unauthorized();
             }
 
