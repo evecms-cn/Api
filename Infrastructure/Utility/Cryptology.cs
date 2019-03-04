@@ -6,12 +6,17 @@ namespace Utility
 {
     public static class Cryptology
     {
-        public static string MD5Encrypt64(string password)
+        public static string MD5Encrypt64(string source)
         {
-            string cl = password;
-            MD5 md5 = MD5.Create(); 
-            byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(cl));
-            return Convert.ToBase64String(s);
+            byte[] sor = Encoding.UTF8.GetBytes(source);
+            MD5 md5 = MD5.Create();
+            byte[] result = md5.ComputeHash(sor);
+            StringBuilder strbul = new StringBuilder(40);
+            for (int i = 0; i < result.Length; i++)
+            {
+                strbul.Append(result[i].ToString("x2"));
+            }
+            return strbul.ToString();
         }
 
         public static string AESEncrypt(string encryptStr, string key)
