@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\User\User.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="Utility\IConfiguration.cs" />
+    <Compile Remove="Utility\DbConnection.cs" />
+    <Compile Remove="EVEMarket\MarketHistoryRepository.cs" />
+    <Compile Remove="Utility\RepositoryServiceCollectionExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="MySql.Data" Version="8.0.15" />
+  </ItemGroup>
+</Project>
