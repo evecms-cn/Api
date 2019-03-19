@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\User\User.csproj" />
     <ProjectReference Include="..\..\Application\Authorization\Authorization.csproj" />
+    <ProjectReference Include="..\..\EVEDataProvider\EVEDataProvider.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\..\Application\Application\Application.csproj" />
   </ItemGroup>

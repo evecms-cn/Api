@@ -9,6 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\User\User.csproj" />
+    <ProjectReference Include="..\..\EVEData\EVEData.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Class1.cs" />
@@ -20,5 +21,10 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.5" />
     <PackageReference Include="MySql.Data" Version="8.0.15" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="EVEData\CCPFiles\typeIDs.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

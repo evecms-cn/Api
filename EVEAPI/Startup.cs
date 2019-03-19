@@ -54,10 +54,10 @@ namespace EVEAPI
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EVECMS API");
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "EVECMS API");
             });
-            //loggerFactory.AddLog4Net();
-            loggerFactory.AddGoogle("eve-manufacture");
+            loggerFactory.AddLog4Net();
+            //loggerFactory.AddGoogle("eve-manufacture");
         }
     }
 }

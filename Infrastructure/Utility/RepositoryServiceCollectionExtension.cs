@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Data;
+using EVEData.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
+using Repository.EVEData;
 using Repository.User;
 using User.Repository;
 
@@ -17,6 +19,7 @@ namespace Utility
             serviceCollection.AddSingleton<IDbConnection>(dbConnection);
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
             serviceCollection.AddTransient<IAuthorizationRepository, AuthorizationRepository>();
+            serviceCollection.AddSingleton<IEVEItemRepository, EVEItemRepository>();
         }
     }
 }

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application\Application.csproj" />
+    <ProjectReference Include="..\EVEData\EVEData.csproj" />
+  </ItemGroup>
+
+</Project>

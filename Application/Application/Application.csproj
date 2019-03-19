@@ -6,5 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\User\User.csproj" />
+    <ProjectReference Include="..\..\EVEData\EVEData.csproj" />
   </ItemGroup>
 </Project>
